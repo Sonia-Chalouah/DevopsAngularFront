@@ -8,7 +8,7 @@ import { Etudiant } from './models/Etudiant';
 })
 export class EtudiantService {
   
-  private baseUrl = 'http://localhost:8050'; // Assure-toi de remplacer l'URL par celle de ton backend Spring
+  private baseUrl = 'http://192.168.43.238:8050'; // Assure-toi de remplacer l'URL par celle de ton backend Spring
 
   constructor(private http: HttpClient) { }
 
