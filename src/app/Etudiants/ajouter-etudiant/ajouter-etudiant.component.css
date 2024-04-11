@@ -1,51 +1,52 @@
-/* Ajoute du padding pour espacer les éléments du formulaire */
+/* Conteneur principal */
 .container {
   padding: 20px;
 }
 
-/* Centre le titre du formulaire */
+/* Titre du formulaire */
 h2 {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Ajoute une couleur de texte rouge pour les champs obligatoires */
+/* Texte pour les champs obligatoires */
 .text-danger {
   color: red;
 }
 
-/* Ajoute une marge en bas pour chaque champ */
+/* Espacement entre les groupes de formulaire */
 .form-group {
   margin-bottom: 20px;
 }
 
-/* Définit une taille de police légèrement plus grande pour les libellés des champs */
+/* Style des libellés des champs */
 label {
   font-size: 1.1rem;
 }
 
-/* Définit une largeur minimale pour les champs de saisie */
+/* Largeur minimale des champs de saisie */
 input {
   min-width: 200px;
 }
 
-/* Définit un style de bordure et une couleur de fond pour les champs de saisie lorsqu'ils sont en focus */
+/* Style des champs de saisie en focus */
 input:focus {
   border-color: #80bdff;
   background-color: #e7f4fe;
 }
 
-/* Ajoute une couleur de fond légèrement plus foncée pour les boutons lorsqu'ils sont en hover */
+/* Style des boutons au survol */
 button:hover {
   background-color: #0069d9;
 }
 
-/* Définit une couleur de fond et une couleur de texte pour le bouton Ajouter */
+/* Style du bouton Ajouter */
 .btn-primary {
   background-color: #007bff;
   color: #fff;
 }
 
-/* Définit une couleur de fond et une couleur de texte pour les boutons lorsqu'ils sont désactivés */
+/* Style des boutons désactivés */
 .btn:disabled {
   background-color: #dcdcdc;
   color: #6c757d;

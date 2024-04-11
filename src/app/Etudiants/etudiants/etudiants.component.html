@@ -4,6 +4,7 @@
       <h1 class="card-title mb-0">Liste des étudiants</h1>
     </div>
     <div class="card-body">
+      <button class="btn btn-primary mb-3" [routerLink]="['/ajouter']">Ajouter étudiant</button>
       <table class="table table-striped">
         <thead class="bg-light">
           <tr>
@@ -26,9 +27,6 @@
               <td>{{ etudiant.dateNaissance }}</td>
               <td>{{ etudiant.email }}</td>
               <td>
-                <button class="btn btn-sm btn-warning" [routerLink]="['update', etudiant.idEtudiant]">
-                  <span class="material-icons">edit</span> 
-                </button>
                 <button class="btn btn-sm btn-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">
                   <span class="material-icons">delete</span> 
                 </button>
