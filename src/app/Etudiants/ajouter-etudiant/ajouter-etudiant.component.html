@@ -1,52 +1,80 @@
-<div class="container d-flex justify-content-center">
-  <h2 class="mb-4">Ajouter un nouvel étudiant</h2>
-  <form #etudiantForm="ngForm" (ngSubmit)="addEtudiant(etudiantForm)" class="needs-validation" novalidate>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="nom">Nom <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="nom" name="nom" ngModel required placeholder="Entrez le nom de l'étudiant">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="prenom">Prénom <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="prenom" name="prenom" ngModel required placeholder="Entrez le prénom de l'étudiant">
-        </div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Ajouter un nouvel étudiant</h2>
+        <form #etudiantForm="ngForm" (ngSubmit)="addEtudiant(etudiantForm)" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nom">Nom <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="nom" name="nom" ngModel required
+                            placeholder="Entrez le nom de l'étudiant">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="prenom">Prénom <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="prenom" name="prenom" ngModel required
+                            placeholder="Entrez le prénom de l'étudiant">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cin">CIN <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="cin" name="cin" ngModel required
+                            placeholder="Entrez le numéro de CIN de l'étudiant">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="ecole">École <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="ecole" name="ecole" ngModel required
+                            placeholder="Entrez le nom de l'école">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="dateNaissance">Date de Naissance <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" ngModel
+                            required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" ngModel required
+                            placeholder="Entrez l'adresse email de l'étudiant">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe <span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="password" name="password" ngModel required
+                    placeholder="Entrez un mot de passe sécurisé">
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cin">CIN <span class="text-danger">*</span></label>
-          <input type="number" class="form-control" id="cin" name="cin" ngModel required placeholder="Entrez le numéro de CIN de l'étudiant">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="ecole">École <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="ecole" name="ecole" ngModel required placeholder="Entrez le nom de l'école">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="dateNaissance">Date de Naissance <span class="text-danger">*</span></label>
-          <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" ngModel required>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="email">Email <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" id="email" name="email" ngModel required placeholder="Entrez l'adresse email de l'étudiant">
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Mot de passe <span class="text-danger">*</span></label>
-      <input type="password" class="form-control" id="password" name="password" ngModel required placeholder="Entrez un mot de passe sécurisé">
-    </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-  </form>
-</div>
+
+</body>
+
+</html>
