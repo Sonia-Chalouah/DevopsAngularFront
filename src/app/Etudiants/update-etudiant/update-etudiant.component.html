@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h1 class="card-title mb-0">Modifier l'étudiant</h1>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="ModifierFoyer()">
+        <div class="mb-3">
+          <label for="updatenomEt" class="form-label">Nom étudiant</label>
+          <input type="text" class="form-control" id="updatenomEt" name="updatenomEt" [(ngModel)]="etudiant.nomEt" required>
+        </div>
+        <div class="mb-3">
+          <label for="updateprenomEt" class="form-label">Prénom étudiant</label>
+          <input type="text" class="form-control" id="updateprenomEt" name="updateprenomEt" [(ngModel)]="etudiant.prenomEt">
+        </div>
+        <div class="mb-3">
+          <label for="updatecin" class="form-label">CIN étudiant</label>
+          <input type="text" class="form-control" id="updatecin" name="updatecin" [(ngModel)]="etudiant.cin" required maxlength="8">
+        </div>
+        <div class="mb-3">
+          <label for="updateecole" class="form-label">École</label>
+          <input type="text" class="form-control" id="updateecole" name="updateecole" [(ngModel)]="etudiant.ecole" required>
+        </div>
+        <div class="mb-3">
+          <label for="updatedateNaissance" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" id="updatedateNaissance" name="updatedateNaissance" [(ngModel)]="etudiant.dateNaissance">
+        </div>
+        <div class="mb-3">
+          <label for="updateemail" class="form-label">Email</label>
+          <input type="text" class="form-control" id="updateemail" name="updateemail" [(ngModel)]="etudiant.email">
+        </div>
+        <button type="submit" class="btn btn-success">Modifier</button>
+      </form>
+    </div>
+  </div>
+</div>

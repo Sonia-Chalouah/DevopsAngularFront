@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h1 class="card-title mb-0">Ajouter un étudiant</h1>
+    </div>
+    <div class="card-body">
+      <form #etudiantForm="ngForm" (ngSubmit)="onSubmit(etudiantForm)">
+        <div class="mb-3">
+          <label for="nomEt" class="form-label">Nom étudiant</label>
+          <input type="text" class="form-control" id="nomEt" name="nomEt" [(ngModel)]="etudiant.nomEt" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenomEt" class="form-label">Prénom étudiant</label>
+          <input type="text" class="form-control" id="prenomEt" name="prenomEt" [(ngModel)]="etudiant.prenomEt" required>
+        </div>
+        <div class="mb-3">
+          <label for="cin" class="form-label">CIN étudiant</label>
+          <input type="text" class="form-control" id="cin" name="cin" [(ngModel)]="etudiant.cin" required>
+        </div>
+        <div class="mb-3">
+          <label for="ecole" class="form-label">École</label>
+          <input type="text" class="form-control" id="ecole" name="ecole" [(ngModel)]="etudiant.ecole" required>
+        </div>
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="etudiant.dateNaissance" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="etudiant.email" required>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</div>
