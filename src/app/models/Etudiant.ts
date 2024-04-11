@@ -6,4 +6,5 @@ export class Etudiant{
   ecole!: string;
   dateNaissance!: Date;
   email!: string;
+  password!: string;
 }

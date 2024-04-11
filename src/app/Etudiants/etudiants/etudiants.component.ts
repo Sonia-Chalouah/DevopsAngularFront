@@ -18,17 +18,27 @@ export class EtudiantComponent implements OnInit {
   }
 
   getAllEtudiants() {
-    this.etudiantService.getAllEtudiants().subscribe((data: Etudiant[]) => {
-      this.etudiants = data;
-    });
+    this.etudiantService.getAllEtudiants().subscribe(
+      (data: Etudiant[]) => {
+        this.etudiants = data;
+      },
+      error => {
+        console.error('Une erreur est survenue lors de la récupération des étudiants : ', error);
+      }
+    );
   }
 
   deleteEtudiant(id: number) {
     if (confirm("Voulez-vous vraiment supprimer cet étudiant ?")) {
-      this.etudiantService.deleteEtudiants(id).subscribe(() => {
-        alert('Suppression effectuée avec succès');
-        this.getAllEtudiants(); // Recharger la liste des étudiants après la suppression
-      });
+      this.etudiantService.deleteEtudiant(id).subscribe(
+        () => {
+          alert('Suppression effectuée avec succès');
+          this.getAllEtudiants(); // Recharger la liste des étudiants après la suppression
+        },
+        error => {
+          console.error('Une erreur est survenue lors de la suppression de l\'étudiant : ', error);
+        }
+      );
     }
   }
 }

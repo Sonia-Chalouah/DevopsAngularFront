@@ -1,52 +1,52 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-  }
-  
-  .container {
-    max-width: 600px;
-  }
-  
-  .card {
-    border: none;
-  }
-  
-  .card-header {
-    border-bottom: none;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-  }
-  
-  .card-body {
-    padding: 2rem;
-  }
-  
-  .form-label {
-    font-weight: bold;
-  }
-  
-  .form-control {
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-  }
-  
-  .btn {
-    border-radius: 0.25rem;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-  }
-  
-  .shadow {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  }
-  
+/* Ajoute du padding pour espacer les éléments du formulaire */
+.container {
+  padding: 20px;
+}
+
+/* Centre le titre du formulaire */
+h2 {
+  text-align: center;
+}
+
+/* Ajoute une couleur de texte rouge pour les champs obligatoires */
+.text-danger {
+  color: red;
+}
+
+/* Ajoute une marge en bas pour chaque champ */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Définit une taille de police légèrement plus grande pour les libellés des champs */
+label {
+  font-size: 1.1rem;
+}
+
+/* Définit une largeur minimale pour les champs de saisie */
+input {
+  min-width: 200px;
+}
+
+/* Définit un style de bordure et une couleur de fond pour les champs de saisie lorsqu'ils sont en focus */
+input:focus {
+  border-color: #80bdff;
+  background-color: #e7f4fe;
+}
+
+/* Ajoute une couleur de fond légèrement plus foncée pour les boutons lorsqu'ils sont en hover */
+button:hover {
+  background-color: #0069d9;
+}
+
+/* Définit une couleur de fond et une couleur de texte pour le bouton Ajouter */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Définit une couleur de fond et une couleur de texte pour les boutons lorsqu'ils sont désactivés */
+.btn:disabled {
+  background-color: #dcdcdc;
+  color: #6c757d;
+}

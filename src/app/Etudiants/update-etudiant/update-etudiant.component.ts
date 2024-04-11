@@ -9,41 +9,41 @@ import { EtudiantService } from 'src/app/etudiant.service';
   styleUrls: ['./update-etudiant.component.css']
 })
 export class UpdateEtudiantComponent implements OnInit {
+  etudiant: Etudiant | null;
 
-  etudiant: Etudiant = {
-    idEtudiant: 0,
-    nomEt: '',
-    prenomEt: '',
-    cin: 0,
-    ecole: '',
-    dateNaissance: new Date(),
-    email: ''
-  };
-
-  constructor(private route: ActivatedRoute, private etudiantService: EtudiantService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.etudiant.idEtudiant = +params['idEtudiant'];
-      this.etudiant.nomEt = params['nomEt'];
-      this.etudiant.prenomEt = params['prenomEt'];
-      this.etudiant.cin = +params['cin'];
-      this.etudiant.ecole = params['ecole'];
-      this.etudiant.dateNaissance = new Date(params['dateNaissance']);
-      this.etudiant.email = params['email'];
-    });
+  constructor(private etudiantService: EtudiantService, private route: ActivatedRoute, private router: Router) { 
+    this.etudiant = null;
   }
 
-  ModifierFoyer() {
-    this.etudiantService.updateEmployee(this.etudiant).subscribe(
-      (res: Etudiant) => {
-        localStorage.clear();
-        this.router.navigate(['']);
-        console.log('Étudiant modifié avec succès:', res);
+  ngOnInit(): void {
+    this.getEtudiantDetails();
+  }
+
+  getEtudiantDetails(): void {
+    const id = +this.route.snapshot.paramMap.get('id')!;
+    this.etudiantService.getEtudiantById(id).subscribe(
+      etudiant => {
+        this.etudiant = etudiant;
       },
-      (error) => {
-        console.error('Erreur lors de la modification de l\'étudiant:', error);
+      error => {
+        console.error('Une erreur est survenue lors de la récupération des détails de l\'étudiant : ', error);
       }
     );
+  }
+
+  updateEtudiant(): void {
+    if (this.etudiant) {
+      this.etudiantService.updateEtudiant(this.etudiant).subscribe(
+        () => {
+          // Redirige vers la liste des étudiants après la mise à jour réussie
+          this.router.navigate(['/etudiants']);
+        },
+        error => {
+          console.error('Une erreur est survenue lors de la mise à jour de l\'étudiant : ', error);
+        }
+      );
+    } else {
+      console.error('Aucun détail d\'étudiant disponible.');
+    }
   }
 }

@@ -1,53 +1,34 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable } from 'rxjs';
-import { map, catchError } from "rxjs/operators";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Etudiant } from './models/Etudiant';
+
 @Injectable({
   providedIn: 'root'
 })
-export class EtudiantService  {
-  private apiServer: string = 'http://localhost:8050/etudiant/';
-  private baseURL: string = 'http://localhost:8050/etudiant/';
+export class EtudiantService {
+  
+  private baseUrl = 'http://localhost:8050'; // Assure-toi de remplacer l'URL par celle de ton backend Spring
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+  constructor(private http: HttpClient) { }
+
+  addEtudiant(etudiant: Etudiant): Observable<Etudiant> {
+    return this.http.post<Etudiant>(`${this.baseUrl}/etudiant/addEtudiant`, etudiant);
   }
 
-  constructor(private _http: HttpClient) { }
-
-
+  updateEtudiant(etudiant: Etudiant): Observable<Etudiant> {
+    return this.http.put<Etudiant>(`${this.baseUrl}/etudiant/updateEtudiant`, etudiant);
+  }
 
   getAllEtudiants(): Observable<Etudiant[]> {
-    return this._http.get<Etudiant[]>(this.apiServer + 'getAllEtudiants', this.httpOptions);
+    return this.http.get<Etudiant[]>(`${this.baseUrl}/etudiant/getAllEtudiants`);
   }
 
-  deleteEtudiants(id:number){
-    return this._http.delete<Etudiant[]>(this.apiServer +'deleteEtudiant/'+id, this.httpOptions);
-    }
+  deleteEtudiant(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/etudiant/deleteEtudiant/${id}`);
+  }
 
-  createEmployee(etudiant: Etudiant) {
-    return this._http.post<Etudiant>(this.apiServer + 'addEtudiant', etudiant, this.httpOptions);  }
-
-
-    updateEmployee(etudiant: Etudiant) {
-      return this._http.put<Etudiant>(this.apiServer + 'updateEtudiant', etudiant, this.httpOptions);  }
-
-
-
-
-getEmployeeById(idEtudiant: number): Observable<Etudiant>{
-  return this._http.get<Etudiant>(`${this.baseURL}/${idEtudiant}`);
+  getEtudiantById(id: number): Observable<Etudiant> {
+    return this.http.get<Etudiant>(`${this.baseUrl}/etudiant/getEtudiantById/${id}`);
+  }
 }
-
-
-
-
-
-
-ModifierFoyer(etudiant: Etudiant){
-  return this._http.put<Etudiant>(this.apiServer + 'updateEtudiant', etudiant, this.httpOptions);  }
-}
-

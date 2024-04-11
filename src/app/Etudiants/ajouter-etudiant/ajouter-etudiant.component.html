@@ -1,36 +1,59 @@
-<div class="container mt-5">
-  <div class="card shadow">
-    <div class="card-header bg-primary text-white">
-      <h1 class="card-title mb-0">Ajouter un étudiant</h1>
+<div class="container">
+  <h2 class="mb-4">Ajouter un nouvel étudiant</h2>
+  <form #etudiantForm="ngForm" (ngSubmit)="addEtudiant(etudiantForm)" class="needs-validation" novalidate>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nom">Nom <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="nom" name="nom" ngModel required placeholder="Entrez le nom de l'étudiant">
+          <div class="invalid-feedback">Le nom est requis.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="prenom">Prénom <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="prenom" name="prenom" ngModel required placeholder="Entrez le prénom de l'étudiant">
+          <div class="invalid-feedback">Le prénom est requis.</div>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <form #etudiantForm="ngForm" (ngSubmit)="onSubmit(etudiantForm)">
-        <div class="mb-3">
-          <label for="nomEt" class="form-label">Nom étudiant</label>
-          <input type="text" class="form-control" id="nomEt" name="nomEt" [(ngModel)]="etudiant.nomEt" required>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cin">CIN <span class="text-danger">*</span></label>
+          <input type="number" class="form-control" id="cin" name="cin" ngModel required placeholder="Entrez le numéro de CIN de l'étudiant">
+          <div class="invalid-feedback">Le CIN est requis.</div>
         </div>
-        <div class="mb-3">
-          <label for="prenomEt" class="form-label">Prénom étudiant</label>
-          <input type="text" class="form-control" id="prenomEt" name="prenomEt" [(ngModel)]="etudiant.prenomEt" required>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="ecole">École <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="ecole" name="ecole" ngModel required placeholder="Entrez le nom de l'école">
+          <div class="invalid-feedback">L'école est requise.</div>
         </div>
-        <div class="mb-3">
-          <label for="cin" class="form-label">CIN étudiant</label>
-          <input type="text" class="form-control" id="cin" name="cin" [(ngModel)]="etudiant.cin" required>
-        </div>
-        <div class="mb-3">
-          <label for="ecole" class="form-label">École</label>
-          <input type="text" class="form-control" id="ecole" name="ecole" [(ngModel)]="etudiant.ecole" required>
-        </div>
-        <div class="mb-3">
-          <label for="dateNaissance" class="form-label">Date de naissance</label>
-          <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="etudiant.dateNaissance" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="etudiant.email" required>
-        </div>
-        <button type="submit" class="btn btn-success">Ajouter</button>
-      </form>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="dateNaissance">Date de Naissance <span class="text-danger">*</span></label>
+          <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" ngModel required>
+          <div class="invalid-feedback">La date de naissance est requise.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email">Email <span class="text-danger">*</span></label>
+          <input type="email" class="form-control" id="email" name="email" ngModel required placeholder="Entrez l'adresse email de l'étudiant">
+          <div class="invalid-feedback">L'adresse email est requise.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe <span class="text-danger">*</span></label>
+      <input type="password" class="form-control" id="password" name="password" ngModel required placeholder="Entrez un mot de passe sécurisé">
+      <div class="invalid-feedback">Le mot de passe est requis.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
 </div>

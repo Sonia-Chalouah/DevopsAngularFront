@@ -4,38 +4,42 @@
       <h1 class="card-title mb-0">Liste des étudiants</h1>
     </div>
     <div class="card-body">
-      <table class="table table-vcenter table-mobile-md card-table">
-        <thead>
+      <table class="table table-striped">
+        <thead class="bg-light">
           <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>CIN</th>
-            <th>École</th>
-            <th>Date de naissance</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">CIN</th>
+            <th scope="col">École</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let etudiant of etudiants">
-            <td>{{ etudiant.nomEt }}</td>
-            <td>{{ etudiant.prenomEt }}</td>
-            <td>{{ etudiant.cin }}</td>
-            <td>{{ etudiant.ecole }}</td>
-            <td>{{ etudiant.dateNaissance }}</td>
-            <td>{{ etudiant.email }}</td>
-            <td>
-              <a class="btn text-success" [routerLink]="['detail', etudiant.idEtudiant, etudiant.nomEt, etudiant.prenomEt, etudiant.cin, etudiant.ecole, etudiant.dateNaissance, etudiant.email]">
-                <span class="material-icons">visibility</span>
-              </a>
-              <a class="btn text-warning" [routerLink]="['Update', etudiant.idEtudiant, etudiant.nomEt, etudiant.prenomEt, etudiant.cin, etudiant.ecole, etudiant.dateNaissance, etudiant.email]">
-                <span class="material-icons">edit</span>
-              </a>
-              <button class="btn text-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">
-                <span class="material-icons">delete</span>
-              </button>
-            </td>
-          </tr>
+          <ng-container *ngIf="etudiants && etudiants.length > 0; else noData">
+            <tr *ngFor="let etudiant of etudiants">
+              <td>{{ etudiant.nomEt }}</td>
+              <td>{{ etudiant.prenomEt }}</td>
+              <td>{{ etudiant.cin }}</td>
+              <td>{{ etudiant.ecole }}</td>
+              <td>{{ etudiant.dateNaissance }}</td>
+              <td>{{ etudiant.email }}</td>
+              <td>
+                <button class="btn btn-sm btn-warning" [routerLink]="['update', etudiant.idEtudiant]">
+                  <span class="material-icons">edit</span> 
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteEtudiant(etudiant.idEtudiant)">
+                  <span class="material-icons">delete</span> 
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-template #noData>
+            <tr>
+              <td colspan="7" class="text-center">Aucune donnée disponible</td>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
     </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
-import { Etudiant } from 'src/app/models/Etudiant';
 import { EtudiantService } from 'src/app/etudiant.service';
 import { Router } from '@angular/router';
+import { Etudiant } from 'src/app/models/Etudiant';
 
 @Component({
   selector: 'app-ajouter-etudiant',
@@ -10,39 +10,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajouter-etudiant.component.css']
 })
 export class AjouterEtudiantComponent implements OnInit {
-  minDate: string = '1900-01-01';
-  etudiant: Etudiant = {
-    idEtudiant: 0,
-    nomEt: '',
-    prenomEt: '',
-    cin: 0,
-    ecole: '',
-    dateNaissance: new Date(),
-    email: ''
-  };
-
+  
   constructor(private etudiantService: EtudiantService, private router: Router) { }
 
-  ngOnInit(): void {}
-
-  saveEtudiant() {
-    this.etudiantService.createEmployee(this.etudiant).subscribe(data => {
-      this.router.navigate(['']); // Naviguer vers la page d'accueil après l'ajout
-      console.log(data);
-    });
+  ngOnInit(): void {
   }
 
-  onSubmit(etudiantForm: NgForm) {
-    if (etudiantForm.valid) {
-      this.saveEtudiant();
-    }
-  }
+  addEtudiant(form: NgForm): void {
+    if (form.valid) {
+      const newEtudiant: Etudiant = {
+        nomEt: form.value.nom,
+        prenomEt: form.value.prenom,
+        cin: form.value.cin,
+        ecole: form.value.ecole,
+        dateNaissance: form.value.dateNaissance,
+        email: form.value.email,
+        password: form.value.password,
+        idEtudiant: 0
+      };
 
-  validateEmailFormat(control: FormControl) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailPattern.test(control.value)) {
-      return { invalidEmail: true };
+      this.etudiantService.addEtudiant(newEtudiant).subscribe(
+        () => {
+          // Redirige vers la liste des étudiants après l'ajout réussi
+          this.router.navigate(['/etudiants']);
+        },
+        error => {
+          console.error('Une erreur est survenue lors de l\'ajout de l\'étudiant : ', error);
+        }
+      );
     }
-    return null;
   }
 }

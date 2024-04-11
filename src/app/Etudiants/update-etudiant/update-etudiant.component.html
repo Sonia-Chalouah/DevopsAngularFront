@@ -1,36 +1,30 @@
-<div class="container mt-5">
-  <div class="card shadow">
-    <div class="card-header bg-primary text-white">
-      <h1 class="card-title mb-0">Modifier l'étudiant</h1>
+<div *ngIf="etudiant" class="container">
+  <h2>Modifier l'étudiant</h2>
+  <form (submit)="updateEtudiant()">
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="etudiant.nomEt" name="nom" required>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="ModifierFoyer()">
-        <div class="mb-3">
-          <label for="updatenomEt" class="form-label">Nom étudiant</label>
-          <input type="text" class="form-control" id="updatenomEt" name="updatenomEt" [(ngModel)]="etudiant.nomEt" required>
-        </div>
-        <div class="mb-3">
-          <label for="updateprenomEt" class="form-label">Prénom étudiant</label>
-          <input type="text" class="form-control" id="updateprenomEt" name="updateprenomEt" [(ngModel)]="etudiant.prenomEt">
-        </div>
-        <div class="mb-3">
-          <label for="updatecin" class="form-label">CIN étudiant</label>
-          <input type="text" class="form-control" id="updatecin" name="updatecin" [(ngModel)]="etudiant.cin" required maxlength="8">
-        </div>
-        <div class="mb-3">
-          <label for="updateecole" class="form-label">École</label>
-          <input type="text" class="form-control" id="updateecole" name="updateecole" [(ngModel)]="etudiant.ecole" required>
-        </div>
-        <div class="mb-3">
-          <label for="updatedateNaissance" class="form-label">Date de naissance</label>
-          <input type="date" class="form-control" id="updatedateNaissance" name="updatedateNaissance" [(ngModel)]="etudiant.dateNaissance">
-        </div>
-        <div class="mb-3">
-          <label for="updateemail" class="form-label">Email</label>
-          <input type="text" class="form-control" id="updateemail" name="updateemail" [(ngModel)]="etudiant.email">
-        </div>
-        <button type="submit" class="btn btn-success">Modifier</button>
-      </form>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" class="form-control" id="prenom" [(ngModel)]="etudiant.prenomEt" name="prenom" required>
     </div>
-  </div>
+    <div class="form-group">
+      <label for="cin">CIN</label>
+      <input type="number" class="form-control" id="cin" [(ngModel)]="etudiant.cin" name="cin" required>
+    </div>
+    <div class="form-group">
+      <label for="ecole">École</label>
+      <input type="text" class="form-control" id="ecole" [(ngModel)]="etudiant.ecole" name="ecole" required>
+    </div>
+    <div class="form-group">
+      <label for="dateNaissance">Date de Naissance</label>
+      <input type="date" class="form-control" id="dateNaissance" [(ngModel)]="etudiant.dateNaissance" name="dateNaissance" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="etudiant.email" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Modifier</button>
+  </form>
 </div>
